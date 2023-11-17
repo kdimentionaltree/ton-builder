@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-docker buildx use ton-builder
+docker buildx use default
 
-for PLATFORM in riscv64 amd64 arm64
+for PLATFORM in amd64 arm64
 do
     echo "Building ${PLATFORM} tonlibjson"
     docker buildx build --platform=linux/${PLATFORM} --progress=plain --load . -t tonlib-build-${PLATFORM} -f ${PLATFORM}.Dockerfile
